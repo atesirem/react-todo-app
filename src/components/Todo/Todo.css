@@ -1,0 +1,42 @@
+.todo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #623baa;
+  background-color: #ff9800;
+  border-radius: 12px;
+}
+.todo-item {
+  display: flex;
+  align-items: center;
+  padding: 0px 12px;
+  width: 100%;
+  min-height: 40px;
+}
+.todo-item.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+.todo + .todo {
+  margin-top: 20px;
+}
+.todo-item__check,
+.todo-item__close {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: transparent;
+  color: #ffa500;
+  border: 1px solid transparent;
+  padding: 4px;
+  border-left: 1px solid #ffa500;
+  min-width: 40px;
+  min-height: 40px;
+  cursor: pointer;
+}
+.todo-item__close {
+}
+
+.todo-item__check img {
+ 
+}

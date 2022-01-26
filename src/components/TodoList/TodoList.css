@@ -1,0 +1,9 @@
+.todo-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  min-width: 320px;
+  color: #333;
+  border-radius: 12px;
+  border: none;
+}
