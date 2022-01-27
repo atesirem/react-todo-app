@@ -1,64 +1,70 @@
-import './App.css';
-import React, {useState, useEffect} from "react"
-import Form from './components/Form/Form';
-import TodoList from './components/TodoList/TodoList';
+import "./App.css";
+import React, { useState, useEffect } from "react";
+import Form from "./components/Form/Form";
+import TodoList from "./components/TodoList/TodoList";
 
 function App() {
+    const [todos, setTodos] = useState([]);
+    const [status, setStatus] = useState("all");
 
- 
+    const saveTodos = (newTodos) => {
+        localStorage.setItem("todos", JSON.stringify(newTodos));
+    };
 
-  const [enteredTodoValue, setEnteredTodoValue] = useState('');
-  const [enteredTodos, setTodos] = useState([]);
-  const [status, setStatus] = useState("all");
-  const [filteredTodos, setFilteredTodos] = useState([]);
+    const getLocalTodos = () => {
+        if (localStorage.getItem("todos") === null) {
+            localStorage.setItem("todos", JSON.stringify([]));
+        } else {
+            let localData = JSON.parse(localStorage.getItem("todos"));
+            setTodos(localData);
+        }
+    };
 
-  const saveTodos = () => {
-      localStorage.setItem('todos', JSON.stringify(enteredTodos))
-      
-  }
-  const getLocalTodos = () => {
-    if(localStorage.getItem('todos') === null) {
-      localStorage.setItem('todos', JSON.stringify([]))
-    } else {
-      let localData = JSON.parse(localStorage.getItem('todos')); 
-      setTodos(localData)
-    }
-  }
+    const handleSelectChange = (newValue) => {
+        setStatus(newValue);
+        saveTodos(todos);
+    };
 
-  useEffect(() => {
-    getLocalTodos()
-  }, [])
+    const handleAddTodo = (newTodo) => {
+        const newTodos = [...todos, newTodo];
+        setTodos(newTodos);
+        saveTodos(newTodos);
+    };
 
-  useEffect(() => {
-    filterHandler();
-    saveTodos();
-  }, [enteredTodos,status])
+    const handleUpdateTodo = (todo) => {
+        const todoIdnex = todos.findIndex((item) => item.id === todo.id);
+        const newTodos = [...todos];
+        newTodos[todoIdnex] = { ...newTodos[todoIdnex], completed: true };
+        setTodos(newTodos);
+        saveTodos(newTodos);
+        getLocalTodos();
+    };
 
-  const filterHandler = () => {
-    switch(status){
-      case 'completed':
-        setFilteredTodos(enteredTodos.filter((todo) => todo.completed === true))
-        break;
-      case 'uncompleted':
-        setFilteredTodos(enteredTodos.filter((todo) => todo.completed === false))
-        break;
-      default:
-        setFilteredTodos(enteredTodos);
-        break;
-    }
-  }
+    const handleRemoveTodo = (todoId) => {
+        const newTodos = todos.filter((el) => el.id !== todoId);
+        setTodos(newTodos);
+        saveTodos(newTodos);
+        getLocalTodos();
+    };
 
-  
+    useEffect(() => {
+        getLocalTodos();
+    }, []);
 
-  return (
-    <div className="App">
-      <div className='form-container'>
-        <h1>TODO APP</h1>
-        <Form todos={enteredTodos} setTodos={setTodos} enteredTodoValue={enteredTodoValue} setEnteredTodoValue={setEnteredTodoValue} setStatus={setStatus} ></Form>
-        <TodoList status={status} todos={enteredTodos} setTodos={setTodos} filteredTodos={filteredTodos}></TodoList>
-      </div>
-    </div>
-  );
+    return (
+        <div className="App">
+            <div className="form-container">
+                <h1>TODO APP</h1>
+                <Form onAddTodo={handleAddTodo} onSelectChange={handleSelectChange} />
+                <TodoList
+                    status={status}
+                    todos={todos}
+                    onUpdateTodo={handleUpdateTodo}
+                    onRemoveTodo={handleRemoveTodo}
+                />
+            </div>
+        </div>
+    );
 }
 
 export default App;
