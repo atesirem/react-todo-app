@@ -1,23 +1,28 @@
 /* eslint-disable array-callback-return */
 import React from "react";
 import "./Todo.css";
-import iconCheck from "../../assets/img/icon/check.png";
-import iconTrash from "../../assets/img/icon/trash.png";
+import iconCheck from "../../assets/img/icon/check-purple.png";
+import iconTrash from "../../assets/img/icon/trash-purple.png";
 
-const Todo = (props) => {
+const Todo = ({onRemoveTodo, onUpdateTodo, todo}) => {
     const deleteHandler = (e) => {
         e.preventDefault();
-        props.onRemoveTodo(props.todo.id);
+        onRemoveTodo(todo.id);
     };
 
     const isDoneHandler = (e) => {
         e.preventDefault();
-        props.onUpdateTodo(props.todo);
+        onUpdateTodo(todo);
+    };
+
+    const isDoneHandlerDubble = (e) => {
+        e.preventDefault();
+        onUpdateTodo(todo);
     };
 
     return (
         <div className="todo">
-            <li className={`todo-item ${props.todo.completed ? "completed" : ""}`}>{props.todo.text}</li>
+            <li onClick={isDoneHandlerDubble} className={`todo-item ${todo.completed ? "completed" : ""}`}>{todo.text}</li>
             <button onClick={isDoneHandler} className="todo-item__check">
                 <img src={iconCheck} alt="" width="20" height="20" />
             </button>

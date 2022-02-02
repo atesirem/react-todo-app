@@ -34,7 +34,7 @@ function App() {
     const handleUpdateTodo = (todo) => {
         const todoIdnex = todos.findIndex((item) => item.id === todo.id);
         const newTodos = [...todos];
-        newTodos[todoIdnex] = { ...newTodos[todoIdnex], completed: true };
+        newTodos[todoIdnex] = { ...newTodos[todoIdnex], completed: !todo.completed };
         setTodos(newTodos);
         saveTodos(newTodos);
         getLocalTodos();

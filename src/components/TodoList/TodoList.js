@@ -8,7 +8,7 @@ const TodoList = ({ onUpdateTodo, onRemoveTodo, todos, status }) => (
             {todos.map((todo) => {
                 const isAll = status === "all";
                 const isCompleted = status === "completed";
-                const newPorps = {
+                const newProps = {
                     onUpdateTodo: onUpdateTodo,
                     onRemoveTodo: onRemoveTodo,
                     todo: todo,
@@ -16,9 +16,9 @@ const TodoList = ({ onUpdateTodo, onRemoveTodo, todos, status }) => (
                 };
 
                 if (isAll) {
-                    return <Todo {...newPorps} />;
+                    return <Todo {...newProps} />;
                 } else if (isCompleted === todo.completed) {
-                    return <Todo {...newPorps} />;
+                    return <Todo {...newProps} />;
                 }
 
                 return null;

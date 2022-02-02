@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./Form.css";
+import iconAdd from "../../assets/img/icon/plus-purple.png";
 
 const Form = ({ onAddTodo, onSelectChange }) => {
     const [enteredTodoValue, setEnteredTodoValue] = useState("");
@@ -23,7 +24,7 @@ const Form = ({ onAddTodo, onSelectChange }) => {
         <form onSubmit={submitTodoHandler}>
             <input type="text" value={enteredTodoValue} onChange={todoHandler} className="todo-input" />
             <button type="submit" className="todo-button">
-                Add
+                <img src={iconAdd} alt="" width="20" height="20" />
             </button>
             <select className="select" onChange={statusHandler}>
                 <option value="all">All</option>

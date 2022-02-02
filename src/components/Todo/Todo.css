@@ -3,8 +3,9 @@
   align-items: center;
   justify-content: space-between;
   border: 1px solid #623baa;
-  background-color: #ff9800;
+  background-color: #20212c;
   border-radius: 12px;
+  color: #ffffff;
 }
 .todo-item {
   display: flex;
@@ -26,10 +27,10 @@
   justify-content: center;
   align-items: center;
   background-color: transparent;
-  color: #ffa500;
+  color: #ad6dde;
   border: 1px solid transparent;
   padding: 4px;
-  border-left: 1px solid #ffa500;
+  border-left: 1px solid #ad6dde;
   min-width: 40px;
   min-height: 40px;
   cursor: pointer;
