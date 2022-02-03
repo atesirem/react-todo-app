@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { useState, useEffect } from "react";
+import Header from "./components/Header/Header";
 import Form from "./components/Form/Form";
 import TodoList from "./components/TodoList/TodoList";
 
@@ -53,8 +54,8 @@ function App() {
 
     return (
         <div className="App">
+            <Header />
             <div className="form-container">
-                <h1>TODO APP</h1>
                 <Form onAddTodo={handleAddTodo} onSelectChange={handleSelectChange} />
                 <TodoList
                     status={status}

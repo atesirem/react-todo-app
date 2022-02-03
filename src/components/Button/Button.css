@@ -1,0 +1,33 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 8px 10px;
+  min-height: 40px;
+  border: 1px solid #623baa;
+  background-color: #20212c;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: 12px;
+  min-width: 80px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all .5s;
+}
+
+.button:hover {
+  border: 1px solid #20212c;
+  background-color: #623baa;
+  cursor: pointer;
+  transition: all .5s;
+}
+
+.button--purple {
+  border: 1px solid #623baa;
+  background-color: #623baa;
+  color: #ffffff;
+}
+.button--purple:hover{
+  border: 1px solid #623baa;
+  background-color: #20212c;
+}
