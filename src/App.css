@@ -8,7 +8,7 @@
   pointer-events: none;
 }
 
-.form-container {
+.todo-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -34,13 +34,10 @@
 }
 
 h1 {
-
   font-size: 52px;
   line-height: 1.2;
   color: #ffa500;
   font-weight: 700;
-  
-
 }
 .App-link {
   color: #61dafb;

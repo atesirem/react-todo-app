@@ -11,7 +11,10 @@ const Form = ({ onAddTodo, onSelectChange }) => {
 
     const submitTodoHandler = (e) => {
         e.preventDefault();
-        onAddTodo({ text: enteredTodoValue, completed: false, id: Math.random() * 1000 });
+        if(enteredTodoValue) {
+
+            onAddTodo({ text: enteredTodoValue, completed: false, id: Math.random() * 1000 });
+        }
         setEnteredTodoValue("");
     };
 
@@ -21,12 +24,14 @@ const Form = ({ onAddTodo, onSelectChange }) => {
     };
 
     return (
-        <form onSubmit={submitTodoHandler}>
-            <input type="text" value={enteredTodoValue} onChange={todoHandler} className="todo-input" />
-            <button type="submit" className="todo-button">
-                <img src={iconAdd} alt="" width="20" height="20" />
-            </button>
-            <select className="select" onChange={statusHandler}>
+        <form onSubmit={submitTodoHandler} className='form'>
+            <div className="form__row">
+                <input type="text" value={enteredTodoValue} onChange={todoHandler} className="todo-input" />
+                <button type="submit" className="todo-button">
+                    <img src={iconAdd} alt="" width="20" height="20" />
+                </button>
+            </div>
+            <select className="select form__select" onChange={statusHandler}>
                 <option value="all">All</option>
                 <option value="completed">Completed</option>
                 <option value="uncompleted">Uncompleted</option>

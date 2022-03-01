@@ -6,9 +6,19 @@ select, input {
   border-radius: 6px;
   font-size: 17px;
   font-weight: 400;
+  line-height: 1.2;
+  width: 100%;
+  height: 100%;
+  padding: 10px 15px;
+  height: 40px;
+}
+input:-internal-autofill-selected {
+  border: 1px solid #272833 !important;
+  background-color: #272833 !important;
+  color: #b6b6b6 !important;
 }
 
-form {
+.form {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -18,10 +28,18 @@ form {
   margin: 0 auto;
   padding: 20px 30px;
 }
+.form__row {
+  display: flex;
+  width: 100%;
+}
+.form__select {
+  
+}
 
 .todo-input {
   padding: 8px 10px;
-  height: 40px;
+  height: 45px;
+  min-width: 375px;
   width: 100%;
 }
 .todo-input + .todo-button {
@@ -58,4 +76,19 @@ form {
   min-height: 45px;
   min-width: 150px;
   padding: 5px 12px;
+}
+
+
+@media screen  and (max-width: 769px){
+  .form {
+    flex-direction: column;
+    padding: 5px 15px;
+  } 
+  .form__select {
+    margin-top: 16px;
+    max-width: 60px;
+  }
+  .todo-input {
+    min-width: auto;
+  }
 }
