@@ -3,7 +3,7 @@ import Todo from "../Todo/Todo";
 import "./TodoList.css";
 
 const TodoList = ({ onUpdateTodo, onRemoveTodo, todos, status }) => (
-    <div className="todo-container">
+    <div className="todo-list-container">
         <ul className="todo-list">
             {todos.map((todo) => {
                 const isAll = status === "all";

@@ -32,6 +32,9 @@ input:-internal-autofill-selected {
   display: flex;
   width: 100%;
 }
+.form__row  + .select{
+  margin-left: 20px;
+}
 .form__select {
   
 }
@@ -90,5 +93,8 @@ input:-internal-autofill-selected {
   }
   .todo-input {
     min-width: auto;
+  }
+  .form__row  + .select{
+    margin-left: 0px;
   }
 }

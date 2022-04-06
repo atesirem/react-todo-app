@@ -3,9 +3,6 @@ import React, { useState, useEffect } from "react";
 import Form from "../Form/Form";
 import TodoList from "../TodoList/TodoList";
 import { useNavigate } from "react-router-dom";
-import {
-  getAuth,onAuthStateChanged
-} from "firebase/auth";
 import { getDatabase, ref, set, onValue} from "firebase/database";
 
 function Dashboard() {
@@ -28,12 +25,7 @@ function Dashboard() {
   };
 
   const getLocalTodos = () => {
-    // if (localStorage.getItem("todos") === null) {
-    //   localStorage.setItem("todos", JSON.stringify([]));
-    // } else {
-    //   let localData = JSON.parse(localStorage.getItem("todos"));
-    //   setTodos(localData);
-    // }
+ 
     const db = getDatabase();
     
     const userId = localStorage.getItem("userId");
@@ -51,19 +43,6 @@ function Dashboard() {
     });
   };
 
-  const firebaseTodo = () => {
-    const auth = getAuth();
-    onAuthStateChanged(auth, (user) => {
-   
-      if (user) {
-        
-      }
-      else {
-        navigate("/");
-      }
- 
-  })
-  }
 
   const handleSelectChange = (newValue) => {
     setStatus(newValue);
@@ -96,7 +75,6 @@ function Dashboard() {
   };
 
   useEffect(() => {
-    firebaseTodo();
     getLocalTodos();
 
   }, []);
